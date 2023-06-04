@@ -1,73 +1,15 @@
 import random
-words = ["adavark", "baboon", "camel"]
-word = random.choice(words)
+import hangman_art as art
+import hangman_wordl as wl
+
+
+word = random.choice(wl.words)
 result = []
 lives = 6
-
-stages = ['''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========
-''']
-
-
-
-
-
-
 for _ in word:
     result.append("_")
+
+print(art.logo)
 print(result)
 
 while "_" in result:
@@ -89,7 +31,7 @@ while "_" in result:
 
         elif inp not in word:
                 print("wrong")
-                print(stages[lives-1])
+                print(art.stages[lives-1])
                 lives -= 1
 
     else: 
