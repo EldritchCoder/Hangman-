@@ -10,29 +10,34 @@ for _ in word:
     result.append("_")
 
 print(art.logo)
+print()
 print(result)
 
 while "_" in result:
     if lives > 0:
         inp = input("Guess a letter: ").lower()
-        if inp in word:
+        
+        if inp in result:
+            print(f"You've already chosen {inp}. Please choose a new word.")
+        
+        elif inp not in result:
+            if inp in word:
                 n1 = len(word)
                 for a in range(n1):
                     b = word[a]
                     if b == inp:
                         result[a] = inp
                         a+=1
-                    else:
-                        pass
-                print(result)
-                if "_" not in result:
-                    print("You win!")
-                    break
-
-        elif inp not in word:
-                print("wrong")
+                        print(f"You guessed {inp}. {inp} is at possition {a+1} in the word.")
+            elif inp not in word:
+                print(f"{inp} not in word.")
                 print(art.stages[lives-1])
                 lives -= 1
+            print(result)
+            
+            if "_" not in result:
+              print("You win!")
+              break
 
     else: 
         print("You lose")
